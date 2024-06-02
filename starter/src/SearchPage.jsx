@@ -13,6 +13,7 @@ function SearchPage({myBooks, arrangedShelves, onShelfChange}) {
   const [keyword, setKeyword] = useState("")
   const [searchResult, setSearchResult] = useState([]);
   const [shelves, setShelves] = useState({})
+  const [searchError, setSearchError] = useState({})
 
   const handleNewChange = useCallback(() => {
     const getSearchResult = async (searchKey) => {
@@ -49,7 +50,12 @@ function SearchPage({myBooks, arrangedShelves, onShelfChange}) {
         });
         console.log("Search result: ", mappedResult);
         setSearchResult([...mappedResult]);
-      }}
+      }
+      if (result && result.error) {
+        setSearchResult([])
+        setSearchError(result)
+      }
+    }
     mapResult(getExistBook);
   }, [myBooks, arrangedShelves, handleNewChange])
     
@@ -81,7 +87,8 @@ function SearchPage({myBooks, arrangedShelves, onShelfChange}) {
         </div>
       </div>
       <div className="search-books-results">
-        <BookList shelf={"none"} books={myBooks} searchResult={searchResult} inShelf={shelves} handleShelfChanging={arrangeBooksInShelves} />
+        {searchResult.length > 0 && <BookList shelf={"none"} books={myBooks} searchResult={searchResult} inShelf={shelves} handleShelfChanging={arrangeBooksInShelves} />}
+        {searchError.error && <span>Error: {searchError.error}</span>}
       </div>
     </div>
   )
