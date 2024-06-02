@@ -24,15 +24,6 @@ function App() {
   ]);
 
   const handleShelfChange = (updateShelves, updateBook) => {
-    // console.log("Update Books: ", updateBook)
-    // const index = myBooks.map((bk) => bk.id).includes(updatedBook.id)
-    //   if (index > -1) {
-    //     myBooks[index] = updatedBook
-    //   } else {
-    //     const newBooks = [...myBooks, updatedBook]
-    //     setMyBooks(newBooks)
-    //     console.log("update after search: ", newBooks)
-    //   }
     setMyBooks(updateBook())
     setArrangedShelves(updateShelves())
   };
@@ -61,7 +52,6 @@ function App() {
     }
     
     getMyBooks();
-    // arrangeBookToShelves()
   }, [myShelves])
   console.log("Demo BookShelves: ", arrangedShelves)
   return (
