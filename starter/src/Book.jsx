@@ -1,6 +1,14 @@
 import { useEffect, useState } from "react";
 import * as BookAPI from "./BooksAPI";
 
+
+/**
+* @description Represents a book
+* @constructor
+* @param {string} shelf - the shelf name which this book's belong to
+* @param {object} book - the information of this book
+* @param {function} shelfChanged - the event represent the updating action
+*/
 function Book({shelf, book, shelfChanged}) {
   const [currentShelf, setCurrentShelf] = useState(book.shelf)
 

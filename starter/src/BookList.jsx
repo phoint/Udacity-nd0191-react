@@ -1,7 +1,15 @@
 import Book from "./Book";
 import { useState, useEffect } from "react";
 
-
+/**
+* @description Represents a list of book in a shelf or search result
+* @constructor
+* @param {string} shelf - the shelf name of this list
+* @param {array} books - a list of current book
+* @param {array} searchResult - a list of book from search result
+* @param {object} inShelf - the shelves' name followed with list of book id
+* @param {function} handleShelfChanging - the event represent the updating action
+*/
 function BookList({ shelf, books, searchResult, inShelf, handleShelfChanging }) {
   const [booksInShelf, setBookInShelf] = useState([])
   const [bookDisplay, setBookDisplay] = useState([])

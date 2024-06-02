@@ -2,6 +2,14 @@ import { useEffect, useState } from "react";
 import BookList from "./BookList";
 import { Link } from "react-router-dom";
 
+/**
+* @description Represents all shelves in main page
+* @constructor
+* @param {array} myShelves - a list of Shelf
+* @param {array} myBooks - a list of current book
+* @param {object} arrangedShelves - the shelves' name followed with list of book id
+* @param {function} onShelfChange - the event represent the updating action
+*/
 function Shelves({ myShelves, myBooks, arrangedShelves, onShelfChange }) {
   const [currentShelves, setCurrentShelf] = useState({})
 

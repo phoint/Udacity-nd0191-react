@@ -3,6 +3,12 @@ import BookList from "./BookList";
 import * as BookAPI from "./BooksAPI";
 import { Link } from "react-router-dom";
 
+/**
+* @description Represents a search page
+* @constructor
+* @param {array} myBooks - the current categorized books
+* @param {object} arrangedShelves - the shelves' name followed with list of book id
+*/
 function SearchPage({myBooks, arrangedShelves, onShelfChange}) {
   const [keyword, setKeyword] = useState("")
   const [searchResult, setSearchResult] = useState([]);
