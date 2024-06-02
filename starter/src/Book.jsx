@@ -39,7 +39,7 @@ function Book({shelf, book, shelfChanged}) {
                 ></div>
                 <div className="book-shelf-changer">
                   <select value={currentShelf} onChange={handleShelfChange}>
-                    <option value="none" disabled>
+                    <option disabled>
                       Move to...
                     </option>
                     <option value="currentlyReading">
@@ -47,12 +47,12 @@ function Book({shelf, book, shelfChanged}) {
                     </option>
                     <option value="wantToRead">Want to Read</option>
                     <option value="read">Read</option>
-                    {shelf !== "none" && <option value="none">None</option>}
+                    <option value="none">None</option>
                   </select>
                 </div>
               </div>
               <div className="book-title">{book.title}</div>
-              <div className="book-authors">{book.authors && book.authors[0]}</div>
+              <div className="book-authors">{book.authors && book.authors.join(", ")}</div>
             </div>
     )
 }

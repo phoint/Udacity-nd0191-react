@@ -1,9 +1,9 @@
 import Book from "./Book";
-import{ useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 
-function BookList({shelf, books, searchResult, inShelf, handleShelfChanging}) {
-  const [booksInShelf, setBookInShelf ] = useState([])
+function BookList({ shelf, books, searchResult, inShelf, handleShelfChanging }) {
+  const [booksInShelf, setBookInShelf] = useState([])
   const [bookDisplay, setBookDisplay] = useState([])
 
 
@@ -22,7 +22,7 @@ function BookList({shelf, books, searchResult, inShelf, handleShelfChanging}) {
   const handleBookListChanging = (updatedShelf) => {
     const updateNewShelves = () => {
       const newShelves = {
-      ...inShelf
+        ...inShelf
       }
       if (Object.keys(newShelves).includes(updatedShelf.origin)) {
         const index = newShelves[updatedShelf.origin].indexOf(updatedShelf.book.id)
@@ -52,21 +52,16 @@ function BookList({shelf, books, searchResult, inShelf, handleShelfChanging}) {
       return newBooks;
     }
     handleShelfChanging(updateNewShelves, updateMyBooks)
-
   }
   const bookList = bookDisplay.filter((book) => booksInShelf.includes(book.id));
   return (
     <ol className="books-grid">
-      {bookList && bookList.map((book) => 
-          {
-            
-            return (
-              <li key={book.id}>
-                <Book shelf={shelf} book={book} shelfChanged={handleBookListChanging}/>
-              </li>
-            )
-          }
-        )
+      {bookList && bookList.map((book) => {
+        return (
+          <li key={book.id}>
+            <Book shelf={shelf} book={book} shelfChanged={handleBookListChanging} />
+          </li>
+        )})
       }
     </ol>
   )
